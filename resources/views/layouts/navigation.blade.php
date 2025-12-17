@@ -205,9 +205,9 @@ class="flex items-center space-x-2 text-white text-sm font-bold">
               <a href="{{ route('staff') }}" class="text-gray-300 hover:bg-white/5 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Staff</a>
               <a href="{{ route('reports') }}" class="text-gray-300 hover:bg-white/5 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Reports</a>
               <a href="{{ route('settings') }}" class="text-gray-300 hover:bg-white/5 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Settings</a> --}}
-                <a href="{{ route('admin.dashboard') }}" 
+                <a href="{{ route('staff.dashboard') }}" 
                 class="flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium
-                {{ request()->routeIs('admin.dashboard') ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-white/5 hover:text-white' }}">
+                {{ request()->routeIs('staff.dashboard') ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-white/5 hover:text-white' }}">
                 <!--
                 category: Buildings
                 tags: [house, dashboard, living, building]
@@ -231,9 +231,9 @@ class="flex items-center space-x-2 text-white text-sm font-bold">
                 </svg>
             Dashboard
         </a>
-          <a href="{{ route('admin.rewards') }}" 
+          <a href="{{ route('staff.rewards') }}" 
                 class="flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium
-                {{ request()->routeIs('admin.rewards') ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-white/5 hover:text-white' }}">
+                {{ request()->routeIs('staff.rewards') ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-white/5 hover:text-white' }}">
                 <!--
                 tags: [contact, contacts, phonebook, profile, resources]
                 version: "1.55"
@@ -259,7 +259,7 @@ class="flex items-center space-x-2 text-white text-sm font-bold">
                 </svg>
             Redemptions
           </a>
-          <a href="{{ route('orders.customer-orders') }}" 
+          <a href="{{ route('orders.customer-orders') }}"
                 class="flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium
                 {{ request()->routeIs('orders.customer-orders') ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-white/5 hover:text-white' }}">
                 <!--

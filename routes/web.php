@@ -5,9 +5,11 @@ use Illuminate\Support\Facades\Route;
 // Controllers
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Controllers\Staff\StaffDashboardController;
 use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Admin\ReportController;
 use App\Http\Controllers\Admin\AdminRewardController;
+use App\Http\Controllers\Staff\StaffRewardController;
 use App\Http\Controllers\Staff\PointsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RewardController;
@@ -151,11 +153,20 @@ Route::prefix('admin')->middleware(['auth','role:admin'])->name('admin.')->group
 */
 Route::prefix('staff')->middleware(['auth','role:staff'])->name('staff.')->group(function () {
 
-    Route::get('/dashboard', function () {
-        return view('staff.dashboard');
-    })->name('dashboard');
+    Route::get('/dashboard', [StaffDashboardController::class, 'index'])->name('dashboard');
 
-    Route::post('/points/add', [PointsController::class, 'store'])->name('points.add');
+    Route::resource('users', StaffUserController::class)->except(['show']);
+
+    // Staff rewards
+    Route::get('/rewards', [StaffRewardController::class, 'index'])->name('rewards');
+    Route::get('/rewards/create', [StaffRewardController::class, 'create'])->name('rewards.create');
+    Route::post('/rewards', [StaffRewardController::class, 'store'])->name('rewards.store');
+    Route::get('/rewards/{reward}/edit', [StaffRewardController::class, 'edit'])->name('rewards.edit');
+    Route::put('/rewards/{reward}', [StaffRewardController::class, 'update'])->name('rewards.update');
+    Route::delete('/rewards/{reward}', [StaffRewardController::class, 'destroy'])->name('rewards.destroy');
+
+    // Reports
+    Route::get('/reports', [ReportController::class, 'index'])->name('reports');
 });
 
 /*
